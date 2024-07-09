@@ -19,6 +19,7 @@ def script():
 
     s = tm.time()
 
+    hp = 100
     score = 0
     hunger = 100
     enemyhp = 50  # it will be modified for every enemy
@@ -106,7 +107,7 @@ def script():
                                                                            30,
                                                                            20,
                                                                            6])
-            [0]
+            [0] # type: ignore
 
             achoo_crit_damage = rnd.choices(
                 population=achoodamage, weights=[40, 30, 20, 6]
@@ -120,7 +121,7 @@ def script():
                                                                           40,
                                                                           40,
                                                                           10])
-            [0]
+            [0] # type: ignore
 
             joes_choose_chance = rnd.choices(
                 population=joeturn_choose, weights=[40, 60])[0]
@@ -186,7 +187,7 @@ def script():
                 if joes_choose_chance == "attack":
                     print(f"JOE ATTACKS -{joes_crit_chance}")
 
-                    enemyhp -= joes_crit_chance
+                    enemyhp -= joes_crit_chance # type: ignore
 
                     joeturn -= 1
 
@@ -205,14 +206,14 @@ def script():
                 if enemy == "moth" and enemychoose_chance == "you":
                     print(f"THE ENEMY ATTACKS YOU -{moth_crit_chance} ")
 
-                    hp -= moth_crit_chance
+                    hp -= moth_crit_chance # type: ignore
 
                     print(f"YOUR HP NOW IS {hp}")
 
                 elif enemy == "moth" and enemychoose_chance == "joe":
                     print(f"THE ENEMY ATTACKS JOE -{moth_crit_chance}")
 
-                    joehp -= moth_crit_chance
+                    joehp -= moth_crit_chance# type: ignore
 
                     print(f"JOES HP NOW IS {joehp}")
 
@@ -422,7 +423,7 @@ def script():
                                         + "eternity\n")
                                     et = tm.time()
                                     el = et - s
-                                    d = tm.timedelta(seconds=el)
+                                    d = tm.timedelta(seconds=el) # type: ignore
                                     dstr = str(d)
                                     print(
                                         F"YOU WIN! YOUR SCORE IS {score} AND"
