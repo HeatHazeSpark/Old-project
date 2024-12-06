@@ -17,12 +17,14 @@ def script():
 
     pressed5 = False
 
-    s = tm.time()
+    start = tm.time()
 
-    hp = 100
     score = 0
     hunger = 100
-    enemyhp = 50  # it will be modified for every enemy
+    hp = 200
+    
+    enemy_hp = 50  # it will be modified for every enemy
+    
     elaptime = 0
     inventory = {"sandwich": 1}
     weapon = {}
@@ -51,10 +53,10 @@ def script():
 
         tm.sleep(1)
 
-    def retryask(tm):
+    def retryask(time):
         print_l(
             f"you lose your score is {score} and you finished"
-            + f"this ending in {tm}\n")
+            + f"this ending in {time}\n")
 
         m = input("do you want to retry? Y/N\n")
         while not pressed1:
@@ -63,17 +65,19 @@ def script():
 
             elif m == "N" or m == "n":
                 sys.exit(1)
+            else:
+                pressed1 == False   
 
     def retrytime_record():
-        et = tm.time()
+        endingTime = tm.time()
 
-        el = et - s
+        elapsedTime = endingTime - start
 
-        d = dtm.timedelta(seconds=el)
+        duration = dtm.timedelta(seconds=elapsedTime)
 
-        dstr = str(d)
+        duration_string = str(duration)
 
-        retryask(dstr)
+        retryask(duration_string)
 
     yourturn = 1
 
@@ -81,7 +85,7 @@ def script():
 
     enemyturn = 0
 
-    def FIGHTMODE(hitthing, enemy):
+    def FIGHTMODE(hitthing, enemy ,enemyhp):
         global yourturn
 
         global joeturn
@@ -90,53 +94,59 @@ def script():
         
         joehp = 400
 
-        global enemyhp
+        enemyhp == 0 
 
         while (hp > 0 or joehp > 0) and enemyhp > 0:
-            broom_crit_chance = rnd.choices(
+           if enemyhp == 50:
+                enemy== "moth"
+           elif enemyhp == 400:
+                enemy == "achoo"
+           elif enemyhp == 1000:
+                enemy == "gopro"          
+                broom_crit_chance = rnd.choices(
                 population=broomdamage, weights=[40, 30, 20, 6])
 
-            bow_crit_chance = rnd.choices(
+                bow_crit_chance = rnd.choices(
                 population=bowdamage, weights=[40, 30, 20, 6])[0]
 
-            sword_crit_chance = rnd.choices(
+                sword_crit_chance = rnd.choices(
                 population=sworddamage, weights=[40, 40, 50, 30]
             )[0]
 
-            moth_crit_chance = rnd.choices(population=mothdamage, weights=[40,
+                moth_crit_chance = rnd.choices(population=mothdamage, weights=[40,
                                                                            30,
                                                                            20,
-                                                                           6])
-            [0] # type: ignore
+                                                                           6]
+                )[0]
 
-            achoo_crit_damage = rnd.choices(
+                achoo_crit_damage = rnd.choices(
                 population=achoodamage, weights=[40, 30, 20, 6]
             )[0]
 
-            gopro_crit_damage = rnd.choices(
+                gopro_crit_damage = rnd.choices(
                 population=theblugoprodamage, weights=[40, 30, 20, 6]
             )[0]
 
-            joes_crit_chance = rnd.choices(population=joedamage, weights=[50,
+                joes_crit_chance = rnd.choices(population=joedamage, weights=[50,
                                                                           40,
                                                                           40,
-                                                                          10])
-            [0] # type: ignore
+                                                                          10]
+                )[0]
 
-            joes_choose_chance = rnd.choices(
+                joes_choose_chance = rnd.choices(
                 population=joeturn_choose, weights=[40, 60])[0]
 
-            enemychoose_chance = rnd.choices(
+                enemychoose_chance = rnd.choices(
                 population=enemyattackchoose, weights=[50, 50]
             )[0]
 
-            print(f"{hp}= {joehp}= {enemyhp}=")
+                print(f"{hp}= {joehp}= {enemyhp}=")
 
-            if yourturn == 1:
-                decide = input(
-                    "ITS YOUR TURN YOU CAN EITHER A)ATTACK OR"
-                    + f"B)DEFEND(increases hp)"
-                )
+                if yourturn == 1:
+                    decide = input(
+                        "ITS YOUR TURN YOU CAN EITHER A)ATTACK OR"
+                        + f"B)DEFEND(increases hp)"
+                    )
 
                 if decide == "A" or decide == "a":
                     if hitthing == "broom":
@@ -179,75 +189,75 @@ def script():
 
                     joeturn += 1
 
-            elif joeturn == 1:
-                print("ITS JOE'S TURN")
+                elif joeturn == 1:
+                    print("ITS JOE'S TURN")
 
-                print(f"JOE CHOOSES to{joes_choose_chance}")
+                    print(f"JOE CHOOSES to{joes_choose_chance}")
 
-                if joes_choose_chance == "attack":
-                    print(f"JOE ATTACKS -{joes_crit_chance}")
+                    if joes_choose_chance == "attack":
+                        print(f"JOE ATTACKS -{joes_crit_chance}")
 
-                    enemyhp -= joes_crit_chance # type: ignore
+                        enemyhp -= joes_crit_chance
 
-                    joeturn -= 1
+                        joeturn -= 1
 
-                    enemyturn += 1
+                        enemyturn += 1
 
-                elif joes_choose_chance == "defend":
-                    print(f"JOE DEFENDS")
+                    elif joes_choose_chance == "defend":
+                        print(f"JOE DEFENDS")
 
-                    joehp += 10
+                        joehp += 10
 
-                    joeturn -= 1
+                        joeturn -= 1
 
-                    enemyturn += 1
+                        enemyturn += 1
 
-            elif enemyturn == 1:
-                if enemy == "moth" and enemychoose_chance == "you":
-                    print(f"THE ENEMY ATTACKS YOU -{moth_crit_chance} ")
+                    elif enemyturn == 1:
+                        if enemy == "moth" and enemychoose_chance == "you":
+                            print(f"THE ENEMY ATTACKS YOU -{moth_crit_chance} ")
 
-                    hp -= moth_crit_chance # type: ignore
+                            hp -= moth_crit_chance
 
-                    print(f"YOUR HP NOW IS {hp}")
+                            print(f"YOUR HP NOW IS {hp}")
 
-                elif enemy == "moth" and enemychoose_chance == "joe":
-                    print(f"THE ENEMY ATTACKS JOE -{moth_crit_chance}")
+                        elif enemy == "moth" and enemychoose_chance == "joe":
+                            print(f"THE ENEMY ATTACKS JOE -{moth_crit_chance}")
 
-                    joehp -= moth_crit_chance# type: ignore
+                            joehp -= moth_crit_chance
 
-                    print(f"JOES HP NOW IS {joehp}")
+                            print(f"JOES HP NOW IS {joehp}")
 
-                elif enemy == "achoo" and enemychoose_chance == "you":
-                    print(f"THE ENEMY ATTACKS YOU -{achoo_crit_damage}")
+                        elif enemy == "achoo" and enemychoose_chance == "you":
+                            print(f"THE ENEMY ATTACKS YOU -{achoo_crit_damage}")
 
-                    hp -= achoo_crit_damage
+                            hp -= achoo_crit_damage
 
-                    print(f"YOUR HP NOW IS {hp}")
+                            print(f"YOUR HP NOW IS {hp}")
 
-                elif enemy == "achoo" and enemychoose_chance == "joe":
-                    print(f"THE ENEMY ATTACKS JOE -{achoo_crit_damage}")
+                        elif enemy == "achoo" and enemychoose_chance == "joe":
+                            print(f"THE ENEMY ATTACKS JOE -{achoo_crit_damage}")
 
-                    joehp -= achoo_crit_damage
+                            joehp -= achoo_crit_damage
 
-                    print(f"JOES HP IS NOW {joehp}")
+                            print(f"JOES HP IS NOW {joehp}")
 
-                elif enemy == "gopro" and enemychoose_chance == "you":
-                    print(f"THE ENEMY ATTACKS YOU -{gopro_crit_damage}")
+                        elif enemy == "gopro" and enemychoose_chance == "you":
+                            print(f"THE ENEMY ATTACKS YOU -{gopro_crit_damage}")
 
-                    print(f"YOUR HP NOW IS {hp}")
+                            print(f"YOUR HP NOW IS {hp}")
 
-                    hp -= gopro_crit_damage
+                            hp -= gopro_crit_damage
 
-                elif enemy == "gopro" and enemychoose_chance == "joe":
-                    print(f"THE ENEMY ATTACKS JOE -{gopro_crit_damage}")
+                        elif enemy == "gopro" and enemychoose_chance == "joe":
+                            print(f"THE ENEMY ATTACKS JOE -{gopro_crit_damage}")
 
-                    joehp -= gopro_crit_damage
+                            joehp -= gopro_crit_damage
 
-                    print(f"JOES HP IS NOW {joehp}")
+                            print(f"JOES HP IS NOW {joehp}")
 
-                enemyturn -= 1
+                        enemyturn -= 1
 
-                yourturn += 1
+                        yourturn += 1
 
         if hp <= 0 and joehp <= 0:
             retrytime_record()
@@ -290,7 +300,8 @@ def script():
     print_l("you wake up and you're hurt and hungry\n")
 
     while not pressed2:
-        q = input("So, would you eat a sandwich? (Y/N)\n")
+        print_l("So, would you eat a sandwich? Y/N\n")
+        q = input("")
 
         if q.lower() == "y":
             pressed2 = True
@@ -305,14 +316,15 @@ def script():
             print_l("You see a shadow of something human-like\n")
 
             while not pressed3:
-                w = input("Would you A) scream or B) look for a weapon\n")
+                print_l("Would you A: scream or B: look for a weapon")
+                w = input("")
 
                 if w.lower() == "a":
                     pressed3 = True
                     print_l("You scream\n")
                     score += 5
                     print_l("The monster gets afraid and instantly kills you\n"
-                            )
+                            )   
                     retrytime_record()
 
                 elif w.lower() == "b":
@@ -328,7 +340,8 @@ def script():
                         "The monster gets out of the shadow and reveals itself"
                         + " as Joe\n")
                     print_l("Joe tells you not to say that stupid joke\n")
-                    e = input("So, would you say it or not? (Y/N)\n")
+                    print_l("So, would you say it or not? Y/N\n")
+                    e = input("")
 
                     while not pressed4:
                         if e.lower() == "y":
@@ -356,9 +369,9 @@ def script():
                             print_l("You continue your way\n")
 
                             while not pressed5:
-                                r = input(
-                                    "You find a bow. Would you take it? (Y/N)"
+                                print_l("You find a bow. Would you take it? Y/N"
                                     + "\n")
+                                r = input("")
 
                                 if r.lower() == "y":
                                     pressed5 = True
@@ -421,13 +434,13 @@ def script():
                                         "Joe disguises as a human and you "
                                         + "become friends with him till "
                                         + "eternity\n")
-                                    et = tm.time()
-                                    el = et - s
-                                    d = tm.timedelta(seconds=el) # type: ignore
-                                    dstr = str(d)
+                                    endingTime = tm.time()
+                                    elapsedTime = endingTime - start
+                                    duration = tm.timedelta(seconds=elapsedTime)
+                                    duration_string = str(duration)
                                     print(
                                         F"YOU WIN! YOUR SCORE IS {score} AND"
-                                        + f"YOU FINISHED IN {dstr}")
+                                        + f"YOU FINISHED IN {duration_string}")
                                     sys.exit(1)
 
                                 elif r.lower() == "n":
