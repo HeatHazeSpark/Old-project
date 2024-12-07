@@ -94,11 +94,11 @@ def script():
         
         joehp = 400
 
-        enemyhp == 0 
+        enemyhp  = 0 
 
         while (hp > 0 or joehp > 0) and enemyhp > 0:
            if enemyhp == 50:
-                enemy== "moth"
+                enemy == "moth"
            elif enemyhp == 400:
                 enemy == "achoo"
            elif enemyhp == 1000:
