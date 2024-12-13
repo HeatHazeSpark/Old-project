@@ -20,22 +20,33 @@ def script():
     start = tm.time()
 
     score = 0
+
     hunger = 100
+
     hp = 200
-    
-    enemy_hp = 50  # it will be modified for every enemy
-    
-    elaptime = 0
+
+    elapsedTime = 0
+
     inventory = {"sandwich": 1}
+
     weapon = {}
+
     broomdict = {"broom": 1}
+
     bowdict = {"bow": 1}
+
     sworddict = {"sword": 1}
+
     broomdamage = [5, 10, 15, 20]
+
     bowdamage = [10, 13, 18, 25]
+
     sworddamage = [90, 100, 200, 300]
+
     joedamage = [50, 60, 65, 100]
+
     joeturn_choose = ["attack", "defend"]
+
     mothdamage = [10, 13, 14, 18]
 
     achoodamage = [20, 24, 26, 35]
@@ -79,67 +90,51 @@ def script():
 
         retryask(duration_string)
 
-    yourturn = 1
-
-    joeturn = 0
-
-    enemyturn = 0
-
     def FIGHTMODE(hitthing, enemy ,enemyhp):
         global yourturn
 
         global joeturn
-      
+        
+        global enemyturn
+
+        yourturn = 1
+
+        joeturn = 0
+
+        enemyturn = 0
+
+        global hp
+
+        global joehp
+
+        global enemy_hp
+
         hp = 100
         
         joehp = 400
 
-        enemyhp  = 0 
+        enemy_hp  = enemyhp 
 
-        while (hp > 0 or joehp > 0) and enemyhp > 0:
-           if enemyhp == 50:
-                enemy == "moth"
-           elif enemyhp == 400:
-                enemy == "achoo"
-           elif enemyhp == 1000:
-                enemy == "gopro"          
-                broom_crit_chance = rnd.choices(
-                population=broomdamage, weights=[40, 30, 20, 6])
+        broom_crit_chance = rnd.choices(population=broomdamage, weights=[40, 30, 20, 6])
 
-                bow_crit_chance = rnd.choices(
-                population=bowdamage, weights=[40, 30, 20, 6])[0]
+        bow_crit_chance = rnd.choices(population=bowdamage, weights=[40, 30, 20, 6])[0]
 
-                sword_crit_chance = rnd.choices(
-                population=sworddamage, weights=[40, 40, 50, 30]
-            )[0]
+        sword_crit_chance = rnd.choices(population=sworddamage, weights=[40, 40, 50, 30])[0]
 
-                moth_crit_chance = rnd.choices(population=mothdamage, weights=[40,
-                                                                           30,
-                                                                           20,
-                                                                           6]
-                )[0]
+        moth_crit_chance = rnd.choices(population=mothdamage, weights=[40,30, 20,6])[0]
 
-                achoo_crit_damage = rnd.choices(
-                population=achoodamage, weights=[40, 30, 20, 6]
-            )[0]
+        achoo_crit_damage = rnd.choices(population=achoodamage, weights=[40, 30, 20, 6])[0]
 
-                gopro_crit_damage = rnd.choices(
-                population=theblugoprodamage, weights=[40, 30, 20, 6]
-            )[0]
+        gopro_crit_damage = rnd.choices(population=theblugoprodamage, weights=[40, 30, 20, 6])[0]
 
-                joes_crit_chance = rnd.choices(population=joedamage, weights=[50,
-                                                                          40,
-                                                                          40,
-                                                                          10]
-                )[0]
+        joes_crit_chance = rnd.choices(population=joedamage, weights=[50,40,40,0])[0]
 
-                joes_choose_chance = rnd.choices(
-                population=joeturn_choose, weights=[40, 60])[0]
+        joes_choose_chance = rnd.choices(population=joeturn_choose, weights=[40, 60])[0]
 
-                enemychoose_chance = rnd.choices(
-                population=enemyattackchoose, weights=[50, 50]
-            )[0]
+        enemychoose_chance = rnd.choices(population=enemyattackchoose, weights=[50, 50])[0]
 
+
+        while (hp > 0 or joehp > 0) and enemyhp > 0:         
                 print(f"{hp}= {joehp}= {enemyhp}=")
 
                 if yourturn == 1:
@@ -360,7 +355,7 @@ def script():
                                 + " party\n")
                             print_l("You continue your way to find the exit\n")
                             print_l("A bodybuilder-sized moth approaches\n")
-                            FIGHTMODE("broom", "moth")
+                            FIGHTMODE("broom", "moth", 50)
                             score += 20
                             hp = 100
                             enemyhp = 400
@@ -387,7 +382,7 @@ def script():
                                     print_l(
                                         "You continue and find a yellow rat "
                                         + "called Achoo from Pokeyman\n")
-                                    FIGHTMODE("bow", "achoo")
+                                    FIGHTMODE("bow", "achoo", 400)
                                     enemyhp = 1000
                                     score += 30
                                     print_l(
@@ -426,7 +421,7 @@ def script():
                                     print_l(
                                         "THE BLUE GOPRO FROM ULTRAKILL LANDS"
                                         + " IN FRONT OF YOU\n")
-                                    FIGHTMODE("sword", "gopro")
+                                    FIGHTMODE("sword", "gopro", 1000)
                                     score += 100
                                     print_l("YEEEES LES GOOOOO\n")
                                     print_l("You and Joe get out\n")
@@ -436,7 +431,7 @@ def script():
                                         + "eternity\n")
                                     endingTime = tm.time()
                                     elapsedTime = endingTime - start
-                                    duration = tm.timedelta(seconds=elapsedTime)
+                                    duration = dtm.timedelta(seconds=elapsedTime)
                                     duration_string = str(duration)
                                     print(
                                         F"YOU WIN! YOUR SCORE IS {score} AND"
@@ -456,9 +451,9 @@ def script():
                                 else:
                                     pressed5 = False
 
-                        else:
+                        
+                    else:
                             pressed4 = False
-
                 else:
                     pressed3 = False
 
