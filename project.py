@@ -24,7 +24,7 @@ def script():
     hunger = 100
 
     hp = 200
-
+    
     elapsedTime = 0
 
     inventory = {"sandwich": 1}
@@ -67,18 +67,18 @@ def script():
     def retryask(time):
         print_l(
             f"you lose your score is {score} and you finished"
-            + f"this ending in {time}\n")
-
+            + f" this ending in {time}\n")
         m = input("do you want to retry? Y/N\n")
         while not pressed1:
             if m == "Y" or m == "y":
+                pressed1 = True
                 script()
 
             elif m == "N" or m == "n":
-                sys.exit(1)
+                pressed1 = True
+                sys.exit(1) 
             else:
-                pressed1 == False   
-
+                pressed1 = False           
     def retrytime_record():
         endingTime = tm.time()
 
@@ -358,7 +358,7 @@ def script():
                             FIGHTMODE("broom", "moth", 50)
                             score += 20
                             hp = 100
-                            enemyhp = 400
+                            enemy_hp = 400
                             joehp = 400
                             print_l("That was easy\n")
                             print_l("You continue your way\n")
@@ -447,22 +447,22 @@ def script():
                                         "Gordon Freeman jumps out of a portal "
                                         + "and yeets you with his portal gun")
                                     retrytime_record()
-
+                        
                                 else:
                                     pressed5 = False
-
-                        
-                    else:
+                        else:
                             pressed4 = False
+                        
+
                 else:
                     pressed3 = False
 
         elif q.lower() == "n":
             pressed2 = True
-            print_l("You don't eat the sandwich")
-            print_l("You feel so hurt that you can't even move")
-            print_l("A big rock falls on you and crushes you")
-            print_l("You're now her crush, lol")
+            print_l("You don't eat the sandwich\n")
+            print_l("You feel so hurt that you can't even move\n")
+            print_l("A big rock falls on you and crushes you\n")
+            print_l("You're now her crush, lol\n")
             retrytime_record()
 
         else:
