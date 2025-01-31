@@ -1,43 +1,3 @@
-#i added this to try branches n shi
-#im not gonna waste it soo.....here's the lyrics for...
-#Sayonara, mata itsuka!
-# [Verse 1]
-# Doko kara haru ga megurikuru no ka shirazushirazu otona ni natta
-# Miageta saki ni wa tsubame ga tondetta ki no nai kao de
-# Moshimo watashi ni tsubasa ga areba negau tabi ni kanashimi ni kureta
-# Sayonara hyakunen saki de mata aimashou shinpai shinaide
-
-# [Pre-Chorus]
-# Itsu no ma ni ka hana ga ochita dareka ga watashi ni uso wo tsuita
-# Doshaburi demo kamawazu tonde iku sono chikara ga hoshikatta
-
-# [Chorus]
-# Dareka to koi ni ochite mata kudakete yagate hanare banare
-# Kuchi no naka hatato chi ga nijinde sora ni tsuba wo haku
-# Mabatake hane wo hiroge kimama ni tobe doko made mo yuke
-# Hyakunen saki mo oboeteru ka na shiranee keredo sayoonara mata itsuka!
-
-# [Verse 2]
-# Shigururu ya shigururu machi e ayumiiru soko kashiko de sode fureru
-# Miageta saki ni wa nanimo inakatta
-# (Aa inakatta)
-
-# [Pre-Chorus]
-# Shitarigao de sawaranaide senaka wo naguritsukeru matohazurе
-# Hito ga notamau jigoku no saki ni koso watashi wa haru wo miru
-
-# [Chorus]
-# Dareka wo aishitakute demo itakutе itsu shika amearare
-# Tsunagareteita nawa wo nigirishimete shikato kamichigiru
-# Tsuranuke neraisadame kedashi tora e doko made mo yuke
-# Hyakunen saki no anata ni aitai kieuseru na yo sa you nara mata itsuka!
-
-# [Post-Chorus]
-# (Ima koi ni ochite mata kudakete hanare banare)
-# Kuchi no naka hatato chi ga nijinde sora ni tsuba wo haku
-# (Ima hane wo hiroge kimama ni tobe doko made mo yuke)
-# Umareta hi kara watashi de itan da shiranakatta daro
-# Sayounara mata itsuka
 def script():
     # imports that are real important
 
@@ -512,3 +472,43 @@ def script():
 
 
 script()
+#i added this to try branches n shi
+#im not gonna waste it soo.....here's the lyrics for...
+#Sayonara, mata itsuka!
+# [Verse 1]
+# Doko kara haru ga megurikuru no ka shirazushirazu otona ni natta
+# Miageta saki ni wa tsubame ga tondetta ki no nai kao de
+# Moshimo watashi ni tsubasa ga areba negau tabi ni kanashimi ni kureta
+# Sayonara hyakunen saki de mata aimashou shinpai shinaide
+
+# [Pre-Chorus]
+# Itsu no ma ni ka hana ga ochita dareka ga watashi ni uso wo tsuita
+# Doshaburi demo kamawazu tonde iku sono chikara ga hoshikatta
+
+# [Chorus]
+# Dareka to koi ni ochite mata kudakete yagate hanare banare
+# Kuchi no naka hatato chi ga nijinde sora ni tsuba wo haku
+# Mabatake hane wo hiroge kimama ni tobe doko made mo yuke
+# Hyakunen saki mo oboeteru ka na shiranee keredo sayoonara mata itsuka!
+
+# [Verse 2]
+# Shigururu ya shigururu machi e ayumiiru soko kashiko de sode fureru
+# Miageta saki ni wa nanimo inakatta
+# (Aa inakatta)
+
+# [Pre-Chorus]
+# Shitarigao de sawaranaide senaka wo naguritsukeru matohazurе
+# Hito ga notamau jigoku no saki ni koso watashi wa haru wo miru
+
+# [Chorus]
+# Dareka wo aishitakute demo itakutе itsu shika amearare
+# Tsunagareteita nawa wo nigirishimete shikato kamichigiru
+# Tsuranuke neraisadame kedashi tora e doko made mo yuke
+# Hyakunen saki no anata ni aitai kieuseru na yo sa you nara mata itsuka!
+
+# [Post-Chorus]
+# (Ima koi ni ochite mata kudakete hanare banare)
+# Kuchi no naka hatato chi ga nijinde sora ni tsuba wo haku
+# (Ima hane wo hiroge kimama ni tobe doko made mo yuke)
+# Umareta hi kara watashi de itan da shiranakatta daro
+# Sayounara mata itsuka
